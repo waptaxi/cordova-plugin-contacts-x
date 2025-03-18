@@ -334,7 +334,7 @@ import PhoneNumberKit
                     completionHandler(true)
                 case .denied:
                     completionHandler(false)
-                case .restricted, .notDetermined, .limited:
+                case .restricted, .notDetermined:
                     if(requestIfNotAvailable) {
                         store.requestAccess(for: .contacts) { granted, error in
                             if granted {
@@ -348,6 +348,8 @@ import PhoneNumberKit
                     } else {
                         completionHandler(false)
                     }
+                case .limited
+                    completionHandler(true)
                 @unknown default:
                     completionHandler(false)
                 }
