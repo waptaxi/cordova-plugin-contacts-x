@@ -348,6 +348,10 @@ import PhoneNumberKit
                     } else {
                         completionHandler(false)
                     }
+                case .limited:
+                    completionHandler(true)
+                @unknown default:
+                    completionHandler(false)
                 }
     }
 
